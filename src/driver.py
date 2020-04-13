@@ -12,7 +12,7 @@ moves = []
 
 def get_input():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-sorter', help="which sorting algorithm to use (bubble)", required=True)
+    parser.add_argument('-sorter', help="which sorting algorithm to use (bubble,quick)", required=True)
     return parser.parse_args()
 
 
@@ -44,6 +44,8 @@ def get_sort_selection(image, args):
         new_moves = []
         if args.sorter == 'bubble':
             _, new_moves = bubble_sort(list(image[i, :, 0]))
+        elif args.sorter == 'quick':
+            _, new_moves = quicksort(list(image[i, :, 0]))
 
         if len(new_moves) > max_moves:
             max_moves = len(new_moves)
